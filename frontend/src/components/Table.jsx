@@ -1,44 +1,56 @@
-import React from "react";
 import { MdDelete, MdModeEditOutline } from "react-icons/md";
+import { useState, useEffect } from "react";
 
 const Table = () => {
-  let DATA = [
-    {
-      id: 1,
-      name: "Voddie Baucham",
-      birth_date: "11-03-2021",
-      gender: "Male",
-      salary: "2000",
-    },
-    {
-      id: 1,
-      name: "Voddie Baucham",
-      birth_date: "11-03-2021",
-      gender: "Male",
-      salary: "2000",
-    },
-    {
-      id: 1,
-      name: "Voddie Baucham",
-      birth_date: "11-03-2021",
-      gender: "Male",
-      salary: "2000",
-    },
-    {
-      id: 1,
-      name: "Voddie Baucham",
-      birth_date: "11-03-2021",
-      gender: "Male",
-      salary: "2000",
-    },
-    {
-      id: 1,
-      name: "Voddie Baucham",
-      birth_date: "11-03-2021",
-      gender: "Male",
-      salary: "2000",
-    },
-  ];
+  const [employees, setEmployees] = useState([]);
+
+  useEffect(() => {
+    async function fetchData() {
+      const data = await fetch("http://localhost:5000/employees/");
+      const { results } = await data.json();
+
+      setEmployees(results);
+    }
+
+    fetchData();
+  }, [employees.length]);
+
+  //     {
+  //       id: 1,
+  //       name: "Voddie Baucham",
+  //       birth_date: "11-03-2021",
+  //       gender: "Male",
+  //       salary: "2000",
+  //     },
+  //     {
+  //       id: 1,
+  //       name: "Voddie Baucham",
+  //       birth_date: "11-03-2021",
+  //       gender: "Male",
+  //       salary: "2000",
+  //     },
+  //     {
+  //       id: 1,
+  //       name: "Voddie Baucham",
+  //       birth_date: "11-03-2021",
+  //       gender: "Male",
+  //       salary: "2000",
+  //     },
+  //     {
+  //       id: 1,
+  //       name: "Voddie Baucham",
+  //       birth_date: "11-03-2021",
+  //       gender: "Male",
+  //       salary: "2000",
+  //     },
+  //     {
+  //       id: 1,
+  //       name: "Voddie Baucham",
+  //       birth_date: "11-03-2021",
+  //       gender: "Male",
+  //       salary: "2000",
+  //     },
+  //   ];
   return (
     <div className="flex flex-col shadow-lg">
       <h1 className="py-6 text-lg font-medium text-center text-[#FA8937]">
@@ -83,13 +95,13 @@ const Table = () => {
                 </tr>
               </thead>
               <tbody className="divide-y divide-gray-200">
-                {DATA?.map((items) => (
+                {employees?.map((items) => (
                   <tr className="bg-white border-b hover:bg-gray-50">
                     <td className="px-6 py-4 text-xs leading-5 text-left text-black100 whitespace-nowrap">
                       {items?.name}
                     </td>
                     <td className="px-6 py-4 text-xs leading-5 text-left text-black100 whitespace-nowrap">
-                      {items?.birth_date}
+                      {items?.dateofbirth}
                     </td>
                     <td className="px-6 py-4 text-xs leading-5 text-black100 text-left whitespace-nowrap">
                       {items?.gender}
