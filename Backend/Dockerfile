@@ -1,5 +1,16 @@
-WORKDIR /usr/Backend/app
+FROM node:12
+
+ENV NODE_ENV = production
+
+WORKDIR /app
+
 COPY package*.json ./
-COPY ..
+
+RUN npm install
+
+
+COPY . .
+
 EXPOSE 5000
+
 CMD ["npm", "start"]
