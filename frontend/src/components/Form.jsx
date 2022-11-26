@@ -1,9 +1,8 @@
 import React from "react";
 import { useDispatch } from "react-redux";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
 const Form = () => {
-
   const dispatch = useDispatch();
 
   const [nameField, setNameField] = useState("");
@@ -17,13 +16,16 @@ const Form = () => {
   const handleSalaryFieldChange = (e) => setSalaryField(e.target.value);
 
   const handleSubmit = () => {
-    dispatch({type: "employees/employeeAdded", payload: {
-      name : nameField,
-      gender : gender,
-      salary : salaryField,
-      birthdate : birthdateField
-    }})
-  }
+    dispatch({
+      type: "employees/employeeAdded",
+      payload: {
+        name: nameField,
+        gender: gender,
+        salary: salaryField,
+        birthdate: birthdateField,
+      },
+    });
+  };
 
   return (
     <div className="shadow-lg">
@@ -75,7 +77,7 @@ const Form = () => {
           type="submit"
           value="Register"
           className="bg-[#FA8C3C] h-10 text-white rounded-full w-full"
-          onClick={}
+          onClick={handleSubmit}
         />
       </form>
     </div>
