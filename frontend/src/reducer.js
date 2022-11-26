@@ -7,7 +7,7 @@ export default function reducer(state = intialState, action) {
         ...state,
         {
           name: action.payload.name,
-          age: action.payload.age,
+          gender: action.payload.gender,
           salary: action.payload.salary,
           birthdate: action.payload.birthdate,
         },
@@ -21,7 +21,7 @@ export default function reducer(state = intialState, action) {
         return {
           ...employee,
           name: action.payload.name,
-          age: action.payload.age,
+          gender: action.payload.gender,
           salary: action.payload.salary,
           birthdate: action.payload.birthdate,
         };

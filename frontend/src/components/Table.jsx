@@ -1,56 +1,20 @@
 import { MdDelete, MdModeEditOutline } from "react-icons/md";
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
+import { useSelector } from "react-redux";
 
 const Table = () => {
-  const [employees, setEmployees] = useState([]);
+  const employees = useSelector((state) => state.employees);
 
-  useEffect(() => {
-    async function fetchData() {
-      const data = await fetch("http://localhost:5000/employees/");
-      const { results } = await data.json();
+  // useEffect(() => {
+  //   async function fetchData() {
+  //     const data = await fetch("http://localhost:5000/employees/");
+  //     const { results } = await data.json();
 
-      setEmployees(results);
-    }
+  //     setEmployees(results);
+  //   }
 
-    fetchData();
-  }, [employees.length]);
-
-  //     {
-  //       id: 1,
-  //       name: "Voddie Baucham",
-  //       birth_date: "11-03-2021",
-  //       gender: "Male",
-  //       salary: "2000",
-  //     },
-  //     {
-  //       id: 1,
-  //       name: "Voddie Baucham",
-  //       birth_date: "11-03-2021",
-  //       gender: "Male",
-  //       salary: "2000",
-  //     },
-  //     {
-  //       id: 1,
-  //       name: "Voddie Baucham",
-  //       birth_date: "11-03-2021",
-  //       gender: "Male",
-  //       salary: "2000",
-  //     },
-  //     {
-  //       id: 1,
-  //       name: "Voddie Baucham",
-  //       birth_date: "11-03-2021",
-  //       gender: "Male",
-  //       salary: "2000",
-  //     },
-  //     {
-  //       id: 1,
-  //       name: "Voddie Baucham",
-  //       birth_date: "11-03-2021",
-  //       gender: "Male",
-  //       salary: "2000",
-  //     },
-  //   ];
+  //   fetchData();
+  // }, [employees.length]);
   return (
     <div className="flex flex-col shadow-lg">
       <h1 className="py-6 text-lg font-medium text-center text-[#FA8937]">
